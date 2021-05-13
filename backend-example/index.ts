@@ -5,6 +5,7 @@ let things = [{ name: 'First thing 🐑' }, { name: 'Second thing 😼' }, { nam
 let app = express();
 
 app.use((req, res, next) => {
+  console.log(req.ip, req.method, req.url);
   res.setHeader('Access-Control-Allow-Origin', '*');
   return next();
 });
