@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
 
-let config: any = undefined;
-
-async function getCongig() {
-  if (!config) config = await (await fetch('/assets/config.json')).json();
-  return config;
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,8 +13,6 @@ export class AppComponent {
   async ngOnInit() {}
 
   async clickButton() {
-    let cfg = await getCongig();
-    console.log(cfg);
-    this.things = await (await fetch(cfg.api + '/things')).json();
+    this.things = await (await fetch('/api/things')).json();
   }
 }
